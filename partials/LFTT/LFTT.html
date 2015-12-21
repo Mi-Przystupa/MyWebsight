@@ -1,0 +1,19 @@
+<div class="left"> 
+
+<h2><a>The Week</a></h2>
+<table > 
+	<tr>
+		<td>Hours</td><td ng-repeat="week in weeks"> | {{week}}</td>
+	</tr>
+	<tr ng-repeat="hid in hoursInDay">
+		<td>{{hid}}</td><td ng-repeat="week in weeks">
+			<select> 
+				<option value="true">busy</option>
+				<option value="false">free</option> 
+			</select>
+		</td>
+	</tr>
+</table>
+
+<button type="button">submit</button>
+</div>

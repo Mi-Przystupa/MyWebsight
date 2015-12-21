@@ -1,21 +1,49 @@
-<!doctype html>
-<html lang="en" data-ng-app="paroxysmApp">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="paroxysmApp">
 <head>
-  <meta charset="utf-8">
-  <title>Paroxysm Technologies</title>
-
-  <script src="node_modules/angular/angular.js"></script>
-  <script src="node_modules/angular/index.js"></script>
-  <script src="js/controller.js"></script>
-  
-	<link src="css" href="style.css" media="screen" />
+<title>Paroxysm Tech</title>
+<meta http-equiv="Content-Language" content="English" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/app.js"></script>
 </head>
-<body ng-controller="paroxysmMainCtrl">
+<body>
+
 <div id="wrap">
-	<div id="header">
-		<h1><a href="#">Paroxysm Tech</a></h1>
-		<h2>Freelance software development</h2>
-	</div>
+
+<div id="header">
+	<h1><a href="#">Paroxysm Tech</a></h1>
+	<h2>Freelance software development</h2>
 </div>
+
+<div id="intro"> 
+<h2><a href="#">Hi! My name is Michael</a></h2>
+I wanted to have my own website, so I made my own website. Have a web application you want to see on it? Tell me and I'll make it if I can.
+</div>
+
+<div id="content"> 
+<div ng-view></div>
+
+<div class="right"> 
+
+<h3>Web Apps</h3>
+<ul>
+<li><a href="#/main">Main Page</a></li> 
+<li><a href="#/LFTT">Lets find time together</a></li> 
+</ul>
+
+</div>
+<div style="clear: both;"> </div>
+</div>
+
+
+<div id="footer">
+Designed by <a href="http://www.free-css-templates.com/">Free CSS Templates</a>, Thanks to <a href="http://www.openwebdesign.org/">Custom Web Design</a>
+</div>
+</div>
+
 </body>
 </html>

@@ -11,7 +11,15 @@ paroxysmApp.config(['$routeProvider',
         controller: 'paroxysmMainCtrl'
       }).
 	  when("/LFTT",{
-		templateUrl: 'partials/LFTT/LFTT.html',
+		templateUrl: 'partials/LFTT/LFTTForm.html',
+        controller: 'paroxysmLFTTCtrl'
+	  }).
+	  when("/LFTTMainPage",{
+		templateUrl: 'partials/LFTT/LFTTMainPage.html',
+        controller: 'paroxysmLFTTCtrl'
+	  }).
+	  when("/LFTTResults",{
+		templateUrl: 'partials/LFTT/LFTTResults.html',
         controller: 'paroxysmLFTTCtrl'
 	  }).
       otherwise({

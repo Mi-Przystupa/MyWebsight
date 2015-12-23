@@ -6,14 +6,14 @@
 		<td>Hours</td><td ng-repeat="week in weeks"> | {{week}}</td>
 	</tr>
 	<tr ng-repeat="hid in hoursInDay">
-		<td>{{hid}}</td><td ng-repeat="week in weeks">
-			<select> 
+		<td>{{hid[0]}}</td><td ng-repeat="week in hid[1]">
+			<select selected="week" ng-model="week"> 
+				<option selected  value="false">free</option> 
 				<option value="true">busy</option>
-				<option value="false">free</option> 
 			</select>
 		</td>
 	</tr>
 </table>
 
-<button type="button">submit</button>
+<button type="button">Submit</button>
 </div>

@@ -1,22 +1,16 @@
 var paroxysmController = angular.module('paroxysmController', []);
 
+var weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
 paroxysmController.controller('paroxysmMainCtrl', function ($scope) {
   $scope.hello = "My name is michael";
 });
 
-paroxysmController.controller('paroxysmLFTTMainCtrl', function ($scope) {
-  
-});
 paroxysmController.controller('paroxysmLFTTCtrl', function ($scope) {
 
 	fbInstance = new Firebase('https://proxysmtech.firebaseio.com/');
 	
-	$scope.weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	$scope.weekSet = [];
-	$scope.FormName = "Hello"
-	for(var i = 0; i < $scope.weeks.length; i++){
-		$scope.weekSet.push({index: i, value: false,day:  $scope.weeks[i]});
-	}
+	$scope.weeks = weeks;
 	$scope.hoursInDay = [];
 
 	fbInstance.child("variable").on("value", function(snapshot) {
@@ -33,7 +27,6 @@ paroxysmController.controller('paroxysmLFTTCtrl', function ($scope) {
 	var days = [];
 
 	$scope.formSubmit = function(valium){
-		console.log("Glad you called");
 		var child = fbInstance.child("variable")
 		child.set(valium);
 		fbInstance.child("variable").on("value", function(snapshot) {
@@ -43,9 +36,31 @@ paroxysmController.controller('paroxysmLFTTCtrl', function ($scope) {
 		});
 	};
 	
+});
+
+paroxysmController.controller('paroxysmLFTTFormCtrl', function ($scope) {
+
+	var fbInstance = new Firebase('https://proxysmtech.firebaseio.com/');
+	$scope.weeks = weeks;
+	$scope.weekSet = [];
+	$scope.FormName = "";
+	for(var i = 0; i < $scope.weeks.length; i++){
+		$scope.weekSet.push({index: i, value: false,day:  $scope.weeks[i]});
+	}
+	
+	$scope.DaySelected = function(weekSet){
+		for(var i = 0; i < weekSet.length; i++){
+			var currentDay = weekSet[i];
+			if(weekSet.value){
+				return weekSet.value;
+			}
+		}
+		return false;
+	}
+
 	$scope.CreateForm = function(FormName, weekSet){
 
-		var chosenDays
+		var chosenDays = []
 		for (var i = 0; i < weekSet.length;i++){
 			currentDay = weekSet[i];
 			if(currentDay.value){
@@ -53,9 +68,11 @@ paroxysmController.controller('paroxysmLFTTCtrl', function ($scope) {
 			}
 		}
 		var child = fbInstance.child("Forms");
-		child.push({
+		child.push().set({
 			name: FormName,
 			days : chosenDays
 		});
-	}
+	};
+	
+	
 });

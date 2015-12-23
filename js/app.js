@@ -24,7 +24,7 @@ $routeProvider.
 	}).
 	when("/LFTTNewForm", {
 		templateUrl: 'partials/LFTT/LFTTGenerateForm.html',
-		controller: 'paroxysmLFTTCtrl'
+		controller: 'paroxysmLFTTFormCtrl'
 	}).
 	otherwise({
 		redirectTo: '/main'

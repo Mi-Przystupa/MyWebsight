@@ -1,21 +1,25 @@
 <div class="left"> 
 
 <h2><a>The Week</a></h2>
-<form>
-<h2><a>Name of form:</a></h2>
-<input type="text" ng-model="FormName" required>
-<h2><a>Which Days: </a></h2>
-<table > 
-	<tr>
-		<td ng-repeat="week in weeks">  {{week}}</td>
-	</tr>
-	<tr>
-		<td ng-repeat="set in weekSet "> <input type="checkbox" ng-model="set.value"></td>
-	</tr>
-</table>
-<p>
-{{FormName.$dirty}}
-</p>
-<button ng-disabled="FormName.$dirty" href="#/LFTT" ng-click="CreateForm(FormName, weekSet)">Submit</button>
+<form name="LFTTForm" novalidate>
+	<div>
+		<h2><a>Name of form:</a></h2>
+		<input type="text" name="name" ng-model="FormName" ng-minlength="3" ng-maxlength="20" required>
+		
+		<p ng-show="LFTTForm.name.$error.minlength" class="help-block">Username is too short.</p>
+		<p ng-show="LFTTForm.name.$error.maxlength" class="help-block">Username is too long.</p>
+	</div>
+	<h2><a>Which Days: </a></h2>
+	<table > 
+		<tr>
+			<td ng-repeat="week in weeks">  {{week}}</td>
+		</tr>
+		<tr>
+			<td ng-repeat="set in weekSet "> <input type="checkbox" ng-model="set.value"></td>
+		</tr>
+	</table>
+	<a href="#/LFTT">
+		<button ng-disabled="LFTTForm.name.$invalid " ng-click="CreateForm(FormName, weekSet)">Submit</button>
+	</a>
 </form>
 </div>

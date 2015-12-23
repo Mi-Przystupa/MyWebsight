@@ -1,0 +1,21 @@
+<div class="left"> 
+
+<h2><a>The Week</a></h2>
+<form>
+<h2><a>Name of form:</a></h2>
+<input type="text" ng-model="FormName" required>
+<h2><a>Which Days: </a></h2>
+<table > 
+	<tr>
+		<td ng-repeat="week in weeks">  {{week}}</td>
+	</tr>
+	<tr>
+		<td ng-repeat="set in weekSet "> <input type="checkbox" ng-model="set.value"></td>
+	</tr>
+</table>
+<p>
+{{FormName.$dirty}}
+</p>
+<button ng-disabled="FormName.$dirty" href="#/LFTT" ng-click="CreateForm(FormName, weekSet)">Submit</button>
+</form>
+</div>

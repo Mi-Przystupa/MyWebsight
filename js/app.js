@@ -1,28 +1,32 @@
 var paroxysmApp = angular.module('paroxysmApp', [
-  'ngRoute',
-  'paroxysmController'
+'ngRoute',
+'paroxysmController'
 ]);
 
 paroxysmApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/main', {
-        templateUrl: 'partials/mainView/mainPage.html',
-        controller: 'paroxysmMainCtrl'
-      }).
-	  when("/LFTT",{
+function($routeProvider) {
+$routeProvider.
+	when('/main', {
+		templateUrl: 'partials/mainView/mainPage.html',
+		controller: 'paroxysmMainCtrl'
+	}).
+	when("/LFTT",{
 		templateUrl: 'partials/LFTT/LFTTForm.html',
-        controller: 'paroxysmLFTTCtrl'
-	  }).
-	  when("/LFTTMainPage",{
+		controller: 'paroxysmLFTTCtrl'
+	}).
+	when("/LFTTMainPage",{
 		templateUrl: 'partials/LFTT/LFTTMainPage.html',
-        controller: 'paroxysmLFTTCtrl'
-	  }).
-	  when("/LFTTResults",{
+		controller: 'paroxysmLFTTCtrl'
+	}).
+	when("/LFTTResults",{
 		templateUrl: 'partials/LFTT/LFTTResults.html',
-        controller: 'paroxysmLFTTCtrl'
-	  }).
-      otherwise({
-        redirectTo: '/main'
-      });
-  }]);
+		controller: 'paroxysmLFTTCtrl'
+	}).
+	when("/LFTTNewForm", {
+		templateUrl: 'partials/LFTT/LFTTGenerateForm.html',
+		controller: 'paroxysmLFTTCtrl'
+	}).
+	otherwise({
+		redirectTo: '/main'
+	});
+}]);
